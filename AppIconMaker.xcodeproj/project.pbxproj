@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		407F8386240AC29700A7E86D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F8385240AC29700A7E86D /* main.swift */; };
+		407F838E240AC2D600A7E86D /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 407F838D240AC2D600A7E86D /* ArgumentParser */; };
+		407F8390240AE83900A7E86D /* IconSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F838F240AE83900A7E86D /* IconSpec.swift */; };
+		407F8392240D5E7000A7E86D /* IconLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F8391240D5E7000A7E86D /* IconLists.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,8 @@
 /* Begin PBXFileReference section */
 		407F8382240AC29700A7E86D /* AppIconMaker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AppIconMaker; sourceTree = BUILT_PRODUCTS_DIR; };
 		407F8385240AC29700A7E86D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		407F838F240AE83900A7E86D /* IconSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSpec.swift; sourceTree = "<group>"; };
+		407F8391240D5E7000A7E86D /* IconLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLists.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				407F838E240AC2D600A7E86D /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				407F8385240AC29700A7E86D /* main.swift */,
+				407F838F240AE83900A7E86D /* IconSpec.swift */,
+				407F8391240D5E7000A7E86D /* IconLists.swift */,
 			);
 			path = AppIconMaker;
 			sourceTree = "<group>";
@@ -78,6 +86,9 @@
 			dependencies = (
 			);
 			name = AppIconMaker;
+			packageProductDependencies = (
+				407F838D240AC2D600A7E86D /* ArgumentParser */,
+			);
 			productName = AppIconMaker;
 			productReference = 407F8382240AC29700A7E86D /* AppIconMaker */;
 			productType = "com.apple.product-type.tool";
@@ -106,6 +117,9 @@
 				Base,
 			);
 			mainGroup = 407F8379240AC29700A7E86D;
+			packageReferences = (
+				407F838C240AC2D600A7E86D /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 407F8383240AC29700A7E86D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,6 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				407F8386240AC29700A7E86D /* main.swift in Sources */,
+				407F8392240D5E7000A7E86D /* IconLists.swift in Sources */,
+				407F8390240AE83900A7E86D /* IconSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +300,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		407F838C240AC2D600A7E86D /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		407F838D240AC2D600A7E86D /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 407F838C240AC2D600A7E86D /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 407F837A240AC29700A7E86D /* Project object */;
 }
