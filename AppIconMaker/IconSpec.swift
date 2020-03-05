@@ -6,9 +6,48 @@
 //  Copyright © 2020 Erik Heitfield. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
+/// Structure describing icon characteristics.
+struct IconSpec: Codable {
+
+    static let baseFileName: String = "icon"
+
+    let size: IconSize
+    let idiom: IconIdiom
+    let scale: IconScale
+    let filename: String
+
+    init(size: IconSize, idiom: IconIdiom, scale: IconScale) {
+        self.size = size
+        self.idiom = idiom
+        self.scale = scale
+        self.filename = IconSpec.baseFileName
+            + "_"
+            + scale.rawValue
+            + size.fileStr
+            + idiom.rawValue
+            + ".png"
+    }
+    
+    /// Return a properly sized icon image for the given specification.
+    /// - Parameter image: base icon image
+    func makeIconImage(fromImage image: NSImage) -> NSImage {
+        let newSize = CGSize(width: size.cgSize.width * scale.cgFloat,
+                             height: size.cgSize.height * scale.cgFloat)
+        let newRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        let newImage = NSImage(size: newSize)
+        newImage.lockFocus()
+        image.draw(in: newRect,
+                   from: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height),
+                   operation: NSCompositingOperation.sourceOver,
+                   fraction: 1.0)
+        newImage.unlockFocus()
+        return newImage
+    }
+
+}
 
 enum IconIdiom: String, Codable {
     case iphone, ipad, mac, universal
@@ -19,7 +58,7 @@ enum IconScale: String, Codable {
     case x1 = "1x"
     case x2 = "2x"
     case x3 = "3x"
-    
+
     var cgFloat: CGFloat {
         switch self {
         case .x1: return 1.0
@@ -47,7 +86,7 @@ enum IconSize: String, Codable {
     case s256 = "256x256"
     case s512 = "512x512"
     case s1024 = "1024x1024"
-    
+
     var cgSize: CGSize {
         switch self {
         case .s16: return CGSize(width: 16, height: 16)
@@ -69,65 +108,17 @@ enum IconSize: String, Codable {
         case .s1024: return CGSize(width: 1024, height: 1024)
         }
     }
-    
+
     // This is an unpleasant workaround for the fact that some of the JSON keys
-    // used for appiconset cannot be used in file names.
+    // used for the appiconset cannot be used in file names.
     var fileStr: String {
         if self == .s28 {
             return "28x28"
         } else if self == .s84 {
             return "84x84"
         } else {
-            return self.rawValue
+            return rawValue
         }
     }
 }
 
-struct IconSpec: Codable {
-    
-    static var baseFileName: String = "icon"
-    
-    let size: IconSize
-    let idiom: IconIdiom
-    let scale: IconScale
-    let filename: String
-
-    init(size: IconSize, idiom: IconIdiom, scale: IconScale) {
-        self.size = size
-        self.idiom = idiom
-        self.scale = scale
-        self.filename = IconSpec.baseFileName
-            + "_"
-            + scale.rawValue
-            + size.fileStr
-            + idiom.rawValue
-            + ".png"
-    }
-    
-    func makeIconImage(fromImage image: NSImage) -> NSImage {
-        let newSize = CGSize( width: size.cgSize.width*scale.cgFloat,
-                              height: size.cgSize.height*scale.cgFloat )
-        let newRect = CGRect( x: 0, y: 0, width: newSize.width, height: newSize.height )
-        let newImage = NSImage(size: newSize)
-        newImage.lockFocus()
-        image.draw( in: newRect,
-                    from: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height),
-                    operation: NSCompositingOperation.sourceOver,
-                    fraction: 1.0   )
-        newImage.unlockFocus()
-        return newImage
-    }
-    
-}
-
-struct Contents: Codable {
-    
-    struct Metadata: Codable {
-        let version = 1
-        let author = "AppIconMaker"
-    }
-    
-    let images: [IconSpec]
-    let info = Metadata()
-
-}

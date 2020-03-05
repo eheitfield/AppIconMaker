@@ -11,6 +11,7 @@
 		407F838E240AC2D600A7E86D /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 407F838D240AC2D600A7E86D /* ArgumentParser */; };
 		407F8390240AE83900A7E86D /* IconSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F838F240AE83900A7E86D /* IconSpec.swift */; };
 		407F8392240D5E7000A7E86D /* IconLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F8391240D5E7000A7E86D /* IconLists.swift */; };
+		407F8394240D67C700A7E86D /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F8393240D67C700A7E86D /* Contents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,8 @@
 		407F8385240AC29700A7E86D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		407F838F240AE83900A7E86D /* IconSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSpec.swift; sourceTree = "<group>"; };
 		407F8391240D5E7000A7E86D /* IconLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLists.swift; sourceTree = "<group>"; };
+		407F8393240D67C700A7E86D /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
+		407F8396240E710400A7E86D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +66,10 @@
 		407F8384240AC29700A7E86D /* AppIconMaker */ = {
 			isa = PBXGroup;
 			children = (
+				407F8396240E710400A7E86D /* README.md */,
 				407F8385240AC29700A7E86D /* main.swift */,
 				407F838F240AE83900A7E86D /* IconSpec.swift */,
+				407F8393240D67C700A7E86D /* Contents.swift */,
 				407F8391240D5E7000A7E86D /* IconLists.swift */,
 			);
 			path = AppIconMaker;
@@ -80,6 +85,7 @@
 				407F837E240AC29700A7E86D /* Sources */,
 				407F837F240AC29700A7E86D /* Frameworks */,
 				407F8380240AC29700A7E86D /* CopyFiles */,
+				407F8395240D74EA00A7E86D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +135,26 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		407F8395240D74EA00A7E86D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp \"${BUILT_PRODUCTS_DIR}\"/AppIconMaker \"${PROJECT_DIR}\"/bin\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		407F837E240AC29700A7E86D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +163,7 @@
 				407F8386240AC29700A7E86D /* main.swift in Sources */,
 				407F8392240D5E7000A7E86D /* IconLists.swift in Sources */,
 				407F8390240AE83900A7E86D /* IconSpec.swift in Sources */,
+				407F8394240D67C700A7E86D /* Contents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
